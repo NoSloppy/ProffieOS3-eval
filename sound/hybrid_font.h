@@ -617,12 +617,12 @@ public:
       case EFFECT_BLAST: Play(&SFX_blaster, &SFX_blst); return;
       case EFFECT_QUOTE: PlayCommon(&SFX_quote); return;
       case EFFECT_BOOT:
-        if (DelayTimerActive()) pending_boot_ = true; return;  // this is BC only because I think this is how it should work
+        if (DelayTimerActive()) { pending_boot_ = true; return; }  // this is BC only because I think this is how it should work
         if (PlayPolyphonic(&SFX_boot)) return;
         // If no boot sounds are found, fall through to font - // BC Only
         [[gnu::fallthrough]];  // this is BC only because I think this is how it should work
       case EFFECT_NEWFONT:
-        if (DelayTimerActive()) pending_newfont_ = true; return;  // this is BC only because I think this is how it should work
+        if (DelayTimerActive()) { pending_newfont_ = true; return; }  // this is BC only because I think this is how it should work
         SB_NewFont();
         return;
       case EFFECT_LOCKUP_BEGIN: SB_BeginLockup(); return;
